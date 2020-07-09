@@ -1,3 +1,4 @@
+#importing itertools to iterate over an array by using cycle
 import itertools
 
 def game_play(game):
@@ -9,7 +10,7 @@ def game_play(game):
         else:
             return False    
 
-    #Front Diagonal
+    #Front Diagonal (\)
     front_diags=[]
     for i in range(len(game)):
         front_diags.append(game[i][i])
@@ -17,7 +18,7 @@ def game_play(game):
         print(f"Player {front_diags[0]} is the winner diagonally (\\)!")
         return True
 
-    #Back Diagonal
+    #Back Diagonal (/)
     back_diags=[]
     for rows,cols in enumerate(reversed(range(len(game)))):
         back_diags.append(game[rows][cols])
@@ -25,14 +26,14 @@ def game_play(game):
        print(f"Player {back_diags[0]} is the winner diagonally (/)!")
        return True
 
-    #Horizontal Match
+    #Horizontal Match (-)
     for i in game:
         print(i)
         if check(i):
             print(f"Player {i[0]} is the winner horizontally!")
             return True
 
-    #Verticle Match
+    #Verticle Match (|)
     for j in range(len(game)):
         a=[]
         for i in game:
@@ -43,7 +44,6 @@ def game_play(game):
     return False
 
 def game_board(board,player=0,row=0,column=0, just_display=False):
-
 
     try:
         if board[row][column]!=0:
@@ -64,8 +64,8 @@ def game_board(board,player=0,row=0,column=0, just_display=False):
         print("Something went wrong!", e)
         return board, False
 
-play=True
-players=[1,2]
+play=True #True is for game start and False is exit
+players=[1,2] 
 
 while play:
     board=int(input("What size game of tic-tac-toe you want to play?"))
